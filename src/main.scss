@@ -102,8 +102,26 @@ body {
         border-radius: px2rem(11);
         //Layout
         @include layout.flex(row);
+        align-items: center;
         $padding-lr-val: clamp(px2rem(16), 4vw, px2rem(24));
         $padding-td-val: clamp(px2rem(17), 4vw, px2rem(25));
         padding: $padding-td-val $padding-lr-val;
+
+        .price {
+            //Layout
+            @include layout.flex(column);
+            gap: px2rem(2);
+            flex-grow: 1;
+            padding-left: px2rem(20);
+            //Typography
+            font-size: px2rem(14);
+            font-weight: 500;
+
+            h2 {
+                color: $heading-color;
+                font-size: 1em;    
+                font-weight: 900;
+            }
+        }
     }
 }

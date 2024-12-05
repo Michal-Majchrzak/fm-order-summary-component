@@ -95,7 +95,22 @@ body {
   border-radius: 0.6875rem;
   display: flex;
   flex-direction: row;
+  align-items: center;
   padding: clamp(1.0625rem, 4vw, 1.5625rem) clamp(1rem, 4vw, 1.5rem);
+}
+.card .pricing-plan-box .price {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  flex-grow: 1;
+  padding-left: 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.card .pricing-plan-box .price h2 {
+  color: var(--heading-font-color);
+  font-size: 1em;
+  font-weight: 900;
 }
 
 /*# sourceMappingURL=styles.css.map */
