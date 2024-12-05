@@ -20,3 +20,7 @@ design/*
 figma/*
 README-template.md
 style-guide.md
+
+#Workflow
+build
+.vscode

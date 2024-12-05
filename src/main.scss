@@ -1,0 +1,109 @@
+@use "../../css-toolkit/modules/layout" as layout;
+@use "../../css-toolkit/modules/reset" as reset;
+@use "../../css-toolkit/base.scss" as *;
+
+// apply reset
+@include reset.reset;
+
+:root {
+    --bg-color: hsl(225, 100%, 94%);
+    --bg-card: hsl(0, 0%, 100%);
+    --bg-pricing-box: hsl(228, 100%, 99%);
+    --blue-box-shadow: 0 40px 40px -20px hsla(228, 87%, 39%, 0.15);
+    --heading-font-color: hsl(223, 46%, 23%);
+    --default-font-color: hsl(224, 23%, 55%);
+}
+
+$bg_color: var(--bg-color);
+$bg_card: var(--bg-card);
+$bg-pricing-box: var(--bg-pricing-box);
+$heading-color: var(--heading-font-color);
+$text-default-color: var(--default-font-color);
+
+/* styles */
+body {
+    // Background
+    background-image: url("../images/pattern-background-desktop.svg");
+    background-position-x: center;
+    background-repeat: repeat-x;
+    background-size: auto min(52vw, px2rem(437));
+    background-clip: border-box;
+    background-color: $bg_color;
+    //Layout
+    @include layout.flex(column);
+    align-items: center;
+    padding: px2rem(71) px2rem(24);
+    // Default Typography
+    color: $text-default-color;
+    font-family: "Red Hat Display", sans-serif;
+    font-weight: 400;
+}
+
+.card {
+    // Background
+    background-color: $bg_card;
+    // Layout
+    max-width: px2rem(450);
+    // Appearance
+    border-radius: px2rem(20);
+    // Effects
+    box-shadow: var(--blue-box-shadow);
+
+    img.card-header {
+        // Layout
+        min-height: px2rem(160);
+        object-fit: cover;
+        // Appearance
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+    }
+
+    .card-body {
+        //Layout
+        padding-top: clamp(px2rem(32), 8.5vw, px2rem(45));
+        padding-bottom: clamp(px2rem(32), 8.5vw, px2rem(48));
+        padding-left: clamp(px2rem(24), 6.4vw, px2rem(48));
+        padding-right: clamp(px2rem(24), 6.4vw, px2rem(48));
+    }
+
+    .summary-container {
+        //Layout
+        $padding-lr-val: clamp(0rem, calc(31.125rem - 100vw), 0.5rem);
+        @include layout.flex(column);
+        gap: px2rem(16);
+        padding: 0 $padding-lr-val;
+    }
+
+    .pricing-container {
+        //Layout
+        @include layout.flex(column);
+        gap: clamp(px2rem(24), 6.4vw, px2rem(32));
+        padding-top: clamp(px2rem(20), calc(31.125rem - 100vw), px2rem(24));
+    }
+
+    .title {
+        color: $heading-color;
+        font-size: clamp(px2rem(22), 5.5vw, px2rem(28));
+        font-weight: 900;
+        text-align: center;
+    }
+
+    p {
+        font-size: clamp(px2rem(15), 4vw, px2rem(16));
+        font-weight: 500;
+        line-height: px2rem(25);
+        text-align: center;
+    }
+
+    .pricing-plan-box {
+        // Background
+        background-color: $bg-pricing-box;
+        //Appearance
+        border-radius: px2rem(11);
+        //Layout
+        @include layout.flex(row);
+        $padding-lr-val: clamp(px2rem(16), 4vw, px2rem(24));
+        $padding-td-val: clamp(px2rem(17), 4vw, px2rem(25));
+        padding: $padding-td-val $padding-lr-val;
+    }
+}
