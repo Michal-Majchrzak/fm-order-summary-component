@@ -1,5 +1,6 @@
 @use "../../css-toolkit/modules/layout" as layout;
 @use "../../css-toolkit/modules/reset" as reset;
+@use "../../css-toolkit/modules/ql" as ql;
 @use "../../css-toolkit/base.scss" as *;
 
 // apply reset
@@ -12,6 +13,10 @@
     --blue-box-shadow: 0 40px 40px -20px hsla(228, 87%, 39%, 0.15);
     --heading-font-color: hsl(223, 46%, 23%);
     --default-font-color: hsl(224, 23%, 55%);
+    --blue-button-background: hsl(245, 75%, 52%);
+    --blue-button-text: hsl(0, 0%, 100%);
+    --blue-button-hover-bg: hsl(245, 83%, 68%);
+    --blue-button-box-shadow: 0 20px 20px 0 hsla(245, 75%, 52%, 0.19);
 }
 
 $bg_color: var(--bg-color);
@@ -19,6 +24,10 @@ $bg_card: var(--bg-card);
 $bg-pricing-box: var(--bg-pricing-box);
 $heading-color: var(--heading-font-color);
 $text-default-color: var(--default-font-color);
+$blue-button-text: var(--blue-button-text);
+$blue-button-bg: var(--blue-button-background);
+$blue-button-hover-bg: var(--blue-button-hover-bg);
+$blue-button-box-shadow: var(--blue-button-box-shadow);
 
 /* styles */
 body {
@@ -32,7 +41,9 @@ body {
     //Layout
     @include layout.flex(column);
     align-items: center;
+    justify-content: center;
     padding: px2rem(71) px2rem(24);
+    min-height: 100vh;
     // Default Typography
     color: $text-default-color;
     font-family: "Red Hat Display", sans-serif;
@@ -60,15 +71,16 @@ body {
 
     .card-body {
         //Layout
-        padding-top: clamp(px2rem(32), 8.5vw, px2rem(45));
-        padding-bottom: clamp(px2rem(32), 8.5vw, px2rem(48));
-        padding-left: clamp(px2rem(24), 6.4vw, px2rem(48));
-        padding-right: clamp(px2rem(24), 6.4vw, px2rem(48));
+        //padding-top: clamp(px2rem(32), 8.5vw, px2rem(45));
+        padding-top: ql.linear-func-clamp(32, 375, 45, 500);
+        padding-bottom: ql.linear-func-clamp(32, 375, 48, 500);;
+        padding-left: ql.linear-func-clamp(24, 375, 48, 500);
+        padding-right: ql.linear-func-clamp(24, 375, 48, 500);
     }
 
     .summary-container {
         //Layout
-        $padding-lr-val: clamp(0rem, calc(31.125rem - 100vw), 0.5rem);
+        $padding-lr-val: ql.linear-func-clamp(0, 500, 8, 375);
         @include layout.flex(column);
         gap: px2rem(16);
         padding: 0 $padding-lr-val;
@@ -77,21 +89,21 @@ body {
     .pricing-container {
         //Layout
         @include layout.flex(column);
-        gap: clamp(px2rem(24), 6.4vw, px2rem(32));
-        padding-top: clamp(px2rem(20), calc(31.125rem - 100vw), px2rem(24));
+        gap: ql.linear-func-clamp(24, 375, 32, 500);
+        padding-top: ql.linear-func-clamp(20, 500, 24, 375);
     }
 
     .title {
         color: $heading-color;
-        font-size: clamp(px2rem(22), 5.5vw, px2rem(28));
+        font-size: ql.linear-func-clamp(22, 375, 28, 500);
         font-weight: 900;
         text-align: center;
     }
 
     p {
-        font-size: clamp(px2rem(15), 4vw, px2rem(16));
+        font-size: ql.linear-func-clamp(15, 375, 16, 500);
         font-weight: 500;
-        line-height: px2rem(25);
+        line-height: ql.linear-func-clamp(25, 375, 26, 500);
         text-align: center;
     }
 
@@ -102,19 +114,20 @@ body {
         border-radius: px2rem(11);
         //Layout
         @include layout.flex(row);
+        flex-wrap: wrap;
         align-items: center;
-        $padding-lr-val: clamp(px2rem(16), 4vw, px2rem(24));
-        $padding-td-val: clamp(px2rem(17), 4vw, px2rem(25));
+        $padding-lr-val: ql.linear-func-clamp(16, 375, 24, 500);
+        $padding-td-val: ql.linear-func-clamp(17, 375, 25, 500);
         padding: $padding-td-val $padding-lr-val;
 
         .price {
             //Layout
             @include layout.flex(column);
-            gap: px2rem(2);
+            gap: ql.linear-func-clamp(2, 375, 6, 500);
             flex-grow: 1;
-            padding-left: px2rem(20);
+            padding-left: ql.linear-func-clamp(0, 250, 20, 375);
             //Typography
-            font-size: px2rem(14);
+            font-size: ql.linear-func-clamp(14, 375, 16, 500);
             font-weight: 500;
 
             h2 {
@@ -122,6 +135,53 @@ body {
                 font-size: 1em;    
                 font-weight: 900;
             }
+        }
+    }
+
+    .btn-base {
+        // Background
+        background-color: unset;
+        // Appearance
+        border: none;
+        border-radius: px2rem(11);
+        //Layout
+        padding: 0 px2rem(1);
+        //Typography
+        color: inherit;
+        font-size: px2rem(15);
+        font-weight: 900;
+
+        &:hover {
+            color: $heading-color;
+            cursor: pointer;
+        }
+    }
+
+    .btn-blue {
+        //Background
+        background-color: $blue-button-bg;
+        //Layout
+        padding: px2rem(15);
+        //Typography
+        color: $blue-button-text;
+        //Effects
+        box-shadow: $blue-button-box-shadow;
+
+        &:hover {
+            background-color: $blue-button-hover-bg;
+            color: $blue-button-text;
+        }
+    }
+
+    .btn-price-change {
+        //Typography
+        color: $blue-button-bg;
+        font-size: ql.linear-func-clamp(13, 375, 14, 500);
+        font-weight: 700;
+        text-decoration: underline;
+
+        &:hover {
+            color: $blue-button-hover-bg;
         }
     }
 }

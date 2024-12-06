@@ -29,6 +29,10 @@ input, button, textarea, select {
   --blue-box-shadow: 0 40px 40px -20px hsla(228, 87%, 39%, 0.15);
   --heading-font-color: hsl(223, 46%, 23%);
   --default-font-color: hsl(224, 23%, 55%);
+  --blue-button-background: hsl(245, 75%, 52%);
+  --blue-button-text: hsl(0, 0%, 100%);
+  --blue-button-hover-bg: hsl(245, 83%, 68%);
+  --blue-button-box-shadow: 0 20px 20px 0 hsla(245, 75%, 52%, 0.19);
 }
 
 /* styles */
@@ -42,7 +46,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 4.4375rem 1.5rem;
+  min-height: 100vh;
   color: var(--default-font-color);
   font-family: "Red Hat Display", sans-serif;
   font-weight: 400;
@@ -61,33 +67,33 @@ body {
   border-top-right-radius: inherit;
 }
 .card .card-body {
-  padding-top: clamp(2rem, 8.5vw, 2.8125rem);
-  padding-bottom: clamp(2rem, 8.5vw, 3rem);
-  padding-left: clamp(1.5rem, 6.4vw, 3rem);
-  padding-right: clamp(1.5rem, 6.4vw, 3rem);
+  padding-top: clamp(2rem, 10.4vw + -0.4375rem, 2.8125rem);
+  padding-bottom: clamp(2rem, 12.8vw + -1rem, 3rem);
+  padding-left: clamp(1.5rem, 19.2vw + -3rem, 3rem);
+  padding-right: clamp(1.5rem, 19.2vw + -3rem, 3rem);
 }
 .card .summary-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 0 clamp(0rem, 31.125rem - 100vw, 0.5rem);
+  padding: 0 clamp(0rem, -6.4vw + 2rem, 0.5rem);
 }
 .card .pricing-container {
   display: flex;
   flex-direction: column;
-  gap: clamp(1.5rem, 6.4vw, 2rem);
-  padding-top: clamp(1.25rem, 31.125rem - 100vw, 1.5rem);
+  gap: clamp(1.5rem, 6.4vw + 0rem, 2rem);
+  padding-top: clamp(1.25rem, -3.2vw + 2.25rem, 1.5rem);
 }
 .card .title {
   color: var(--heading-font-color);
-  font-size: clamp(1.375rem, 5.5vw, 1.75rem);
+  font-size: clamp(1.375rem, 4.8vw + 0.25rem, 1.75rem);
   font-weight: 900;
   text-align: center;
 }
 .card p {
-  font-size: clamp(0.9375rem, 4vw, 1rem);
+  font-size: clamp(0.9375rem, 0.8vw + 0.75rem, 1rem);
   font-weight: 500;
-  line-height: 1.5625rem;
+  line-height: clamp(1.5625rem, 0.8vw + 1.375rem, 1.625rem);
   text-align: center;
 }
 .card .pricing-plan-box {
@@ -95,22 +101,55 @@ body {
   border-radius: 0.6875rem;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
-  padding: clamp(1.0625rem, 4vw, 1.5625rem) clamp(1rem, 4vw, 1.5rem);
+  padding: clamp(1.0625rem, 6.4vw + -0.4375rem, 1.5625rem) clamp(1rem, 6.4vw + -0.5rem, 1.5rem);
 }
 .card .pricing-plan-box .price {
   display: flex;
   flex-direction: column;
-  gap: 0.125rem;
+  gap: clamp(0.125rem, 3.2vw + -0.625rem, 0.375rem);
   flex-grow: 1;
-  padding-left: 1.25rem;
-  font-size: 0.875rem;
+  padding-left: clamp(0rem, 16vw + -2.5rem, 1.25rem);
+  font-size: clamp(0.875rem, 1.6vw + 0.5rem, 1rem);
   font-weight: 500;
 }
 .card .pricing-plan-box .price h2 {
   color: var(--heading-font-color);
   font-size: 1em;
   font-weight: 900;
+}
+.card .btn-base {
+  background-color: unset;
+  border: none;
+  border-radius: 0.6875rem;
+  padding: 0 0.0625rem;
+  color: inherit;
+  font-size: 0.9375rem;
+  font-weight: 900;
+}
+.card .btn-base:hover {
+  color: var(--heading-font-color);
+  cursor: pointer;
+}
+.card .btn-blue {
+  background-color: var(--blue-button-background);
+  padding: 0.9375rem;
+  color: var(--blue-button-text);
+  box-shadow: var(--blue-button-box-shadow);
+}
+.card .btn-blue:hover {
+  background-color: var(--blue-button-hover-bg);
+  color: var(--blue-button-text);
+}
+.card .btn-price-change {
+  color: var(--blue-button-background);
+  font-size: clamp(0.8125rem, 0.8vw + 0.625rem, 0.875rem);
+  font-weight: 700;
+  text-decoration: underline;
+}
+.card .btn-price-change:hover {
+  color: var(--blue-button-hover-bg);
 }
 
 /*# sourceMappingURL=styles.css.map */
