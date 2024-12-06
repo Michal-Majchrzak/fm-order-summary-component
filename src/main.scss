@@ -32,7 +32,7 @@ $blue-button-box-shadow: var(--blue-button-box-shadow);
 /* styles */
 body {
     // Background
-    background-image: url("../images/pattern-background-desktop.svg");
+    background-image: url("assets/images/pattern-background-desktop.svg");
     background-position-x: center;
     background-repeat: repeat-x;
     background-size: auto min(52vw, px2rem(437));
@@ -43,7 +43,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: px2rem(71) px2rem(24);
-    min-height: 100vh;
+    min-height: 100dvh;
     // Default Typography
     color: $text-default-color;
     font-family: "Red Hat Display", sans-serif;

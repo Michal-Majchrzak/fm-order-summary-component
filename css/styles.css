@@ -37,7 +37,7 @@ input, button, textarea, select {
 
 /* styles */
 body {
-  background-image: url("../images/pattern-background-desktop.svg");
+  background-image: url("assets/images/pattern-background-desktop.svg");
   background-position-x: center;
   background-repeat: repeat-x;
   background-size: auto min(52vw, 27.3125rem);
@@ -48,7 +48,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 4.4375rem 1.5rem;
-  min-height: 100vh;
+  min-height: 100dvh;
   color: var(--default-font-color);
   font-family: "Red Hat Display", sans-serif;
   font-weight: 400;
